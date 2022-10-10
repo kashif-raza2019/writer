@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Writer</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/vendor/css/mdb.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <!-- Container wrapper -->
+            <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 writer-font font-medium" href="/">
+                Writer
+            </a>
+        
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                </ul>
+                <!-- Left links -->
+        
+                <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/top-trending'">
+                    Top Trending
+                </button>
+                <a href="/profile" style="text-decoration: none; cursor: pointer;">
+                    <img src="/public/assets/users_icon/<%=session.profileImage%>" class="profileImage" alt="Profile Image" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title=<%= session.fullName %> >
+                </a>
+                <a
+                    class="btn btn-danger"
+                    href="/logout"
+                    role="button"
+                    >Logout</a>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Main Content -->
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Your Diary</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                       <h4 class="writer-font"><%=session.bio %></h4>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <button type="button" class="btn btn-primary btn-rounded margin-top" style="cursor: pointer;" onclick="location.href='/followers'" >My Followers <%= session.followers.length %></button>
+                        <button type="button" class="btn btn-primary btn-rounded margin-top" style="cursor: pointer;" onclick="location.href='/following'" >I am Following <%= session.following.length %></button>
+                        <button type="button" class="btn btn-secondary btn-rounded margin-top" onclick="location.href='/write'">Write</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mainContent">
+            <!-- Pages written -->
+            <div class="row d-flex justify-content-center inputRow">
+                <div class="col-md-6 text-center">
+                    <h1 class="writer-font font-largest" style="color: white;">~ Posts Written ~</h1>
+                </div>
+            </div>
+        <% if(posts.length > 0) { %>
+        <% for(var i=0; i< posts.length; i++){ %>
+            <div class="container-fluid mainContent">
+                <div class="form-for-sign">
+                    <div class="row d-flex justify-content-center inputRow">
+                        <div class="col-md-6 text-center">
+                            <h1 class="writer-font font-largest"><%= posts[i].title %></h1>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center inputRow">
+                        <div class="col-md-6 text-center">
+                            <h4 style="font-size: 1.2rem;" id="p_<%= i %>"></h4>
+                        </div>
+                    </div>
+                    <script>
+                        var p = document.getElementById("p_<%= i %>");
+                        p.innerHTML = "<%= posts[i].content %>";
+                        if(p.innerrHTML.text > 100){
+                            p.innerHTML = p.innerHTML.substring(0, 100) + "...";
+                        }
+                    </script>
+                    <div class="row d-flex justify-content-center inputRow">
+                        <div class="col-md-6 text-center">
+                            <button type="button" class="btn btn-primary btn-rounded margin-top" style="cursor: pointer;" onclick="location.href='/edit/<%= posts[i]._id %>'" >Edit</button>
+                            <button type="button" class="btn btn-danger btn-rounded margin-top" style="cursor: pointer;" onclick="if(confirm('Are you sure you want to delete?')){location.href='/delete/<%= posts[i]._id %>'}" >Delete</button>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center inputRow">
+                        <div class="col-md-6 text-center">
+                            <h4 style="color: rgb(37, 102, 199)"><%= posts[i].date %></h4>
+                            <h4>Likes: <span class="text-primary"><%= posts[i].likes.length %></span> Min-Read: <span class="text-primary"><%= posts[i].readTime %></span> </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <% } %>
+        <% } else { %>
+        <div class="row d-flex justify-content-center inputRow">
+            <div class="col-md-6 text-center">
+                 <h4 class="writer-font" style="color: rgb(33, 199, 214);">You have not written any posts yet.</h4>
+            </div>
+        </div>
+        <% } %>           
+        <div class="container-fluid mainContent margin-top">
+           <div class="form-for-sign">
+            <div class="row d-flex justify-content-center inputRow">
+                <div class="col-md-3 text-center writer-font">
+                    &nbsp; &nbsp;
+                    <img src="/public/assets/night.jpg" alt="Diary Image" id="diaryImage" />
+                </div>
+                <div class="col-md-3 text-center writer-font font-largest">
+                    "My lyrics are my diary - you're hearing every detail of my life." <br>
+                    ~ Taylor Momsen
+                    &nbsp;
+                </div>
+            </div>
+           </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="container-fluid mainContent margin-top">
+            <div class="form-for-sign">
+             <div class="row d-flex justify-content-center inputRow">
+                 <div class="col-md-6 text-center">
+                     Made with &hearts; By Kashif Raza <a href="#top" data-mdb-placement="right" data-mdb-toggle="tooltip" title="Go to Top"><i class="fa fa-arrow-up"></i></a>
+                 </div>
+             </div>
+            </div>
+         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="/public/js/scripts.js"></script>
+        <script src="/public/vendor/js/mdb.min.js"></script>
+        
+    </body>
+</html>

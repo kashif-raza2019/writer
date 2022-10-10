@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="http://code.jquery.com/color/jquery.color-2.1.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/public/css/algorithms.css">
+</head>
+<body>
+    <div class="main-container">
+        <table id="canvas">
+          <tbody>
+            <tr>
+              <td id="1">1</td>
+              <td id="2">2</td>
+              <td id="3">3</td>
+            </tr>
+            <tr>
+              <td id="4">4</td>
+              <td id="5">5</td>
+              <td id="6">6</td>
+            </tr>
+            <tr>
+              <td id="7">7</td>
+              <td id="8">8</td>
+              <td id="9">9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="controller">
+        <div class="row">
+          <select id="selectAlgo">
+            <option value="Matrix Traversal">Matrix Traversal</option>
+            <option value="Border Traversal">Border Traversal</option>
+            <option value="Spiral Traversal">Spiral Traversal</option>
+            <option value="Rat in a Maze">Rat in a Maze</option>
+            <option value="N-Queen">N-Queen</option>
+            <option value="Shortest Safe Route with Landmines">Shortest Safe Route with Landmines</option>
+          </select>
+        </div>
+        <div class="row">
+          <input type="text" class="matrix-object" value="3x3" id="val" placeholder="3x3" />
+          <button type="button" onclick="addMatrix('#val')">Start</button>
+        </div>
+        <div class="row">
+          <label for="speed">Control the Speed of Animation</label>
+          <input type="range" name="speed" class="matrix-animation-speed" step="50" min="0" max="100" onchange="setSpeed(this.value)" />
+        </div>
+        <div class="row">
+          <button type="button" id="stopBtn">Stop</button>
+        </div>
+      
+      </div>
+      
+    <script src="/public/js/algorithmspage.js"></script>
+</body>
+</html>

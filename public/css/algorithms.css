@@ -1,0 +1,52 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto;
+    padding: 5px auto;
+  }
+  
+  td {
+    background-color: pink!important;
+    border: 1px solid grey;
+    height: 80px;
+    border-radius: 4px!important;
+    width: 80px;
+    text-align: center;
+    margin: 5px!important;
+  }
+  
+  td:hover {
+    opacity: 0.8!important;
+  }
+  
+  .controller {
+    display: flex;
+    margin: 5px auto;
+    padding: 20px;
+  }
+  .row {
+    display: flex-box;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  input[type="range"],
+  input[type="number"] {
+    outline: none;
+  }
+
+  select{
+      outine: none;
+      height: 50px;
+      text-align: center;
+      border: 1px slategray solid;
+      border-radius: 4px;
+  }
+
+  button,input,select:focus{
+      outline: none;
+  }
+  

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Writer</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/vendor/css/mdb.min.css">
+        <link rel="stylesheet" href="/public/css/texteditor.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/index.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/public/css/writer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.14/css/froala_editor.min.css" integrity="sha512-X5etY6JrAxOdXx/oyB9sqZ4IYEx8539ccjcxxOn0NtMZ7Tgl8WzMOjDe5Hw0//gEsiZpt7tQFfAawQA4cId0rw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/4.0.14/js/froala_editor.min.js" integrity="sha512-S8KBWiPEJnWrSuxolmWWNhRVX1juJA7T8TrGMKO5Pz44jjtubdS13M6jtTSYZFeoc0y2kImYEV+ofCl3G09fWw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <!-- Container wrapper -->
+            <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 writer-font font-medium" href="/">
+                Writer
+            </a>
+        
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Write</a>
+                </li>
+                </ul>
+                <!-- Left links -->
+        
+                <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/top-trending'">
+                    Top Trending
+                </button>
+                <a href="/profile" style="text-decoration: none; cursor: pointer;">
+                    <img src="/public/assets/users_icon/<%=session.profileImage%>" class="profileImage" alt="Profile Image" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title=<%= session.fullName %> >
+                </a>
+                <a
+                    class="btn btn-danger"
+                    href="/logout"
+                    role="button"
+                    >Logout</a>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Main Content -->
+        <div class="container-fluid mainContent">
+            <form action="/save-post" id="post-form" method="POST">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <h1 class="writer-font font-largest">Your thoughts are really precious</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <h3 class="writer-font">Write Here</h3>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <div class="form-outline">
+                            <input type="text" id="title" name="title" class="form-control form-control-lg" required/>
+                            <label class="form-label" for="title">Give Title</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <div class="form-outline">
+                            <select name="viewStatus" id="viewStatus" class = "profile-select" required>
+                                <option value="private" selected>Keep Private</option>
+                                <option value="public">Post Publicly</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <div class="form-outline">
+                            <textarea name="content"  id="editor"  cols="30" rows="10" maxlength="10000" class="text-editor" required></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-9 text-center">
+                        <div class="form-outline">
+                            <button type="submit" class="btn btn-primary btn-rounded">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        <div class="container-fluid mainContent margin-top">
+           <div class="form-for-sign">
+            <div class="row d-flex justify-content-center inputRow">
+                <div class="col-md-3 text-center writer-font">
+                    &nbsp; &nbsp;
+                    <img src="/public/assets/night.jpg" alt="Diary Image" id="diaryImage" />
+                </div>
+                <div class="col-md-3 text-center writer-font font-largest">
+                    "My lyrics are my diary - you're hearing every detail of my life." <br>
+                    ~ Taylor Momsen
+                    &nbsp;
+                </div>
+            </div>
+           </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="container-fluid mainContent margin-top">
+            <div class="form-for-sign">
+             <div class="row d-flex justify-content-center inputRow">
+                 <div class="col-md-6 text-center">
+                     Made with &hearts; By Kashif Raza <a href="#top" data-mdb-placement="right" data-mdb-toggle="tooltip" title="Go to Top"><i class="fa fa-arrow-up"></i></a>
+                 </div>
+             </div>
+            </div>
+         </div>
+
+
+        <script>
+            // var editor = new FroalaEditor('#editor');
+            // function submitForm() {
+            //     var content = editor.html.get();
+            //     console.log(html);
+            // }
+        </script>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="/public/js/scripts.js"></script>
+        <script src="/public/vendor/js/mdb.min.js"></script>
+    </body>
+</html>

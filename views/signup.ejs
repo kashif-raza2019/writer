@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Writer</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/vendor/css/mdb.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <!-- Container wrapper -->
+            <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 writer-font font-medium" href="/">
+                Writer
+            </a>
+        
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                </ul>
+                <!-- Left links -->
+        
+                <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/top-trending'">
+                    Top Trending
+                </button>
+                <button type="button" class="btn btn-secondary me-3">
+                    Subscribe
+                </button>
+                <a
+                    class="btn btn-dark px-3"
+                    href="https://github.com/kashif-raza2019"
+                    role="button"
+                    ><i class="fa fa-github"></i
+                ></a>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Main Content -->
+        <div class="container-fluid mainContent">
+            <form action="/signup" class="form-for-sign" method="post">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Get your book now!</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <input type="email" id="typeEmail" name="email" class="form-control form-control-lg" autocomplete="off" required/>
+                            <label class="form-label" for="typeEmail">Enter Email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <input type="password" name="password" id="typePassword" class="form-control form-control-lg" autocomplete="new-password" required/>
+                            <label class="form-label" for="typePassword">Enter Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <input type="text" id="typePassword2" class="form-control form-control-lg" onkeyup="checkEqual()" autocomplete="new-password"  required/>
+                            <label class="form-label" for="typePassword2">Re-enter Password</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow" >
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <h3 class="text-danger" id="errorText">Please Re-enter the correct password</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow" >
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <h3 class="text-success" id="errorText"></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <button type="button" class="btn btn-info btn-rounded font-normal" id="eyeBtn"  data-mdb-toggle="tooltip" data-mdb-placement="left" title="Show Password" onclick="showPassword()"><i class="fa fa-eye"></i></button>
+                            <button type="submit" class="btn btn-primary btn-rounded font-normal" id="signUpBtn">Signup</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="container-fluid mainContent margin-top">
+           <div class="form-for-sign">
+            <div class="row d-flex justify-content-center inputRow">
+                <div class="col-md-3 text-center writer-font">
+                    &nbsp; &nbsp;
+                    <img src="/public/assets/inkpot.png" alt="Diary Image" id="diaryImageNotBorder" />
+                </div>
+                <div class="col-md-3 text-center writer-font font-largest">
+                    "<%= quote %>" <br>
+                    ~ <%= author %>
+                    &nbsp;
+                </div>
+            </div>
+           </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="container-fluid mainContent margin-top">
+            <div class="form-for-sign">
+             <div class="row d-flex justify-content-center inputRow">
+                 <div class="col-md-6 text-center">
+                     Made with &hearts; By Kashif Raza <a href="#top" data-mdb-placement="right" data-mdb-toggle="tooltip" title="Go to Top"><i class="fa fa-arrow-up"></i></a>
+                 </div>
+             </div>
+            </div>
+         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="/public/js/scripts.js"></script>
+        <script src="/public/vendor/js/mdb.min.js"></script>
+        
+    </body>
+</html>

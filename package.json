@@ -1,0 +1,35 @@
+{
+  "name": "writer",
+  "version": "1.0.0",
+  "description": "Long tweeting social media site",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "Blogging",
+    "Page",
+    "by",
+    "Kashif"
+  ],
+  "author": "Kashif Raza",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.0",
+    "connect-redis": "^6.1.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-session": "^1.17.3",
+    "md5": "^2.3.0",
+    "memorystore": "^1.6.7",
+    "mongoose": "^6.3.8",
+    "nodemailer": "^6.7.5",
+    "path": "^0.12.7",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Writer</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/vendor/css/mdb.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <!-- Container wrapper -->
+            <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 writer-font font-medium" href="/">
+                Writer
+            </a>
+        
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Dashboard</a>
+                </li>
+                </ul>
+                <!-- Left links -->
+        
+                <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2">
+                    Top Trending
+                </button>
+                <a href="/profile" style="text-decoration: none; cursor: pointer;">
+                    <img src="/public/assets/users_icon/<%=session.profileImage%>" class="profileImage" alt="Profile Image" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title=<%= session.fullName %> >
+                </a>
+                <a
+                    class="btn btn-danger"
+                    href="/logout"
+                    role="button"
+                    >Logout</a>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Main Content -->
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Your Diary</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                       <h4 class="writer-font"><%=session.bio %></h4>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <button type="button" class="btn btn-primary btn-rounded margin-top" onclick="location.href='/followers'">My Followers</button>
+                        <button type="button" class="btn btn-primary btn-rounded margin-top"  onclick="location.href='/following'">I am Following</button>
+                        <button type="button" class="btn btn-secondary btn-rounded margin-top" onclick="location.href='/write'">Write</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">My Followers</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-12 text-center">
+                        <div class="row">
+                            <% if(session.followers.length > 0){ %>
+                            <% for(var i=0; i < session.followers.length; i++){ %>
+                                <div class="col-md-6 text-normal">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <img src="/public/assets/users_icon/<%= session.followers[i].profileImage%>" class="profileImage" alt="Profile Image" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title=<%= session.followers[i].fullName %> >
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <h5 class="card-title"><%= session.followers[i].fullName%></h5>
+                                                    <p class="card-text"><%= session.followers[i].bio%></p>
+                                                    <a href="/profile/<%= session.followers[i].username%>" class="btn btn-primary">View Profile</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                            <% }else{ %>
+                                <div class="col-md-12 text-normal">
+                                    <h1 style="color: rgb(157, 27, 27);">No Followers</h1>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mainContent margin-top">
+           <div class="form-for-sign">
+            <div class="row d-flex justify-content-center inputRow">
+                <div class="col-md-3 text-center writer-font">
+                    &nbsp; &nbsp;
+                    <img src="/public/assets/night.jpg" alt="Diary Image" id="diaryImage" />
+                </div>
+                <div class="col-md-3 text-center writer-font font-largest">
+                    "My lyrics are my diary - you're hearing every detail of my life." <br>
+                    ~ Taylor Momsen
+                    &nbsp;
+                </div>
+            </div>
+           </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="container-fluid mainContent margin-top">
+            <div class="form-for-sign">
+             <div class="row d-flex justify-content-center inputRow">
+                 <div class="col-md-6 text-center">
+                     Made with &hearts; By Kashif Raza <a href="#top" data-mdb-placement="right" data-mdb-toggle="tooltip" title="Go to Top"><i class="fa fa-arrow-up"></i></a>
+                 </div>
+             </div>
+            </div>
+         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="/public/js/scripts.js"></script>
+        <script src="/public/vendor/js/mdb.min.js"></script>
+        
+    </body>
+</html>

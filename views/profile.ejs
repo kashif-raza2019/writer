@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Writer</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/public/assets/favicon.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/vendor/css/mdb.min.css">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="/public/css/index.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" id="top">
+            <!-- Container wrapper -->
+            <div class="container">
+            <!-- Navbar brand -->
+            <a class="navbar-brand me-2 writer-font font-medium" href="/">
+                Writer
+            </a>
+        
+            <!-- Toggle button -->
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <i class="fa fa-bars"></i>
+            </button>
+        
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <!-- Left links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                </li>
+                </ul>
+                <!-- Left links -->
+        
+                <div class="d-flex align-items-center">
+                <button type="button" class="btn btn-link px-3 me-2" onclick="location.href='/top-trending'">
+                    Top Trending
+                </button>
+                <a href="/profile" style="text-decoration: none; cursor: pointer;">
+                    <img src="/public/assets/users_icon/<%=session.profileImage%>" class="profileImage" alt="Profile Image" data-mdb-toggle="tooltip" data-mdb-placement="bottom" title=<%= session.fullName %>>
+                </a>
+                <a
+                    class="btn btn-danger"
+                    href="/logout"
+                    role="button"
+                    >Logout</a>
+                </div>
+            </div>
+            <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        <!-- Main Content -->
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">My Diary</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <button type="button" class="btn btn-primary btn-rounded margin-top">My Followers</button>
+                        <button type="button" class="btn btn-primary btn-rounded margin-top">I am Following</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Set your username</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <form action="" id="username-form">
+                        <div class="col-md-12 text-center">
+                            <div class="form-outline">
+                                <input type="text" class="form-control form-control-lg"  name="uname" id="uname" onkeypress="checkAvailable();" />
+                            </div>
+                            <div class="form-outline">
+                                <button type="submit" class="btn btn-primary btn-rounded margin-top"> Set Username</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        <form action="/updateprofile" method="post">
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Change Your Avatar</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <span class="avatar-block"><input type="radio" name="avatar" value="unisex.png"/> <img src='/public/assets/users_icon/unisex.png' /></span>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_1.png" <% if(session.profileImage == 'female_1.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_1.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_2.png" <% if(session.profileImage == 'female_2.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_2.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_3.png" <% if(session.profileImage == 'female_3.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_3.png' /></span>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_4.png" <% if(session.profileImage == 'female_4.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_4.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_5.png" <% if(session.profileImage == 'female_5.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_5.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="female_6.png" <% if(session.profileImage == 'female_6.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/female_6.png' /></span>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_1.png" <% if(session.profileImage == 'male_1.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_1.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_2.png" <% if(session.profileImage == 'male_2.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_2.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_3.png" <% if(session.profileImage == 'male_3.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_3.png' /></span>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_4.png" <% if(session.profileImage == 'male_1.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_4.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_5.png" <% if(session.profileImage == 'male_2.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_5.png' /></span>
+                        <span class="avatar-block"><input type="radio" name="avatar" value="male_6.png" <% if(session.profileImage == 'male_3.png') { %> <%= 'checked' %> <% } %> /> <img src='/public/assets/users_icon/male_6.png' /></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid mainContent">
+            <div class="form-for-sign">
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <h1 class="writer-font font-largest">Personal Information</h1>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <input type="text" name="first"  id="first" class="form-control form-control-lg" value="<%= session.firstName %>"/>
+                            <label class="form-label" for="first">First Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <input type="text" name="last"  id="last" class="form-control form-control-lg" value="<%= session.lastName %>"/>
+                            <label class="form-label" for="last">Last Name</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <textarea type="text" name="bio"  id="bio" class="form-control form-control-lg" maxlength="100"><%= session.bio %></textarea>
+                            <label class="form-label" for="bio">Bio</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                            <select name="gender" class="profile-select"  id="gender" >
+                                <option value="male" <% if(session.gender == 'male'){ %> <%= 'selected' %> <% } %> >Male</option>
+                                <option value="female" <% if(session.gender == 'female'){ %> <%= 'selected' %> <% } %>>Female</option>
+                                <option value="lgbtq" <% if(session.gender == 'lgbtq'){ %> <%= 'selected' %> <% } %>>LGBTQIA+</option>
+                                <option value="undisclosed" <% if(session.gender == 'undisclosed'){ %> <%= 'selected' %> <% } %>>Not to Disclose</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center inputRow">
+                    <div class="col-md-6 text-center">
+                        <div class="form-outline">
+                           <button type="submit" class="btn btn-success btn-rounded">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <script>
+            function checkAvailable(){
+                const username = document.querySelector("#uname").value;
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+
+                    if (this.readyState == 4 && this.status == 200) {
+                        const response = this.responseText;
+                        const errTxt = document.querySelector("#errorText");
+                        const submitBtn = document.querySelector("#signUpBtn");
+
+                        if(response == "true"){
+                            submitBtn.disabled = true;
+                            errTxt.style.display = "block";
+                        }else{
+                            submitBtn.disabled = false;
+                            errTxt.style.display = "none";
+                        }
+                    }
+                }
+
+                xhttp.open("GET", "/checkAvailable?uname="+username, true);
+                xhttp.send();
+            }
+        </script>
+        <!-- Footer -->
+        <div class="container-fluid mainContent margin-top">
+            <div class="form-for-sign">
+             <div class="row d-flex justify-content-center inputRow">
+                 <div class="col-md-6 text-center">
+                     Made with &hearts; By Kashif Raza <a href="#top" data-mdb-placement="right" data-mdb-toggle="tooltip" title="Go to Top"><i class="fa fa-arrow-up"></i></a>
+                 </div>
+             </div>
+            </div>
+         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+        <script src="/public/js/scripts.js"></script>
+        <script src="/public/vendor/js/mdb.min.js"></script>
+        
+    </body>
+</html>
