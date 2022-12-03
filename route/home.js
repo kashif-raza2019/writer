@@ -98,7 +98,7 @@ route.post('/signup',async (req, res)=>{
             authenticationToken : activationToken
         });
         createNewUser.save();
-        let homeUrl = "http://itswriter.herokuapp.com/api/user/activate/"+activationToken;
+        let homeUrl = "http://writer.onrender.com/api/user/activate/"+activationToken;
         let subject = "Account Activation : Writer";
         let message = '<h1 style="text-align: center">Welcome to Writer</h1>, <br><strong>your one and only online-blogger cum diary entry. Fully secured and encrypted.</strong><br />';
         message += '<h2 style="color: purple; text-align: center">Please activate your account using this Link</h2><br />';
@@ -153,7 +153,7 @@ route.post('/forgotPassword', async (req, res)=>{
         const user = await User.findOne({username : email});
         if(user){
             authenticationToken = user.authenticationToken;
-            const url = "http://itswriter.herokuapp.com/account/resetpassword/" + authenticationToken;
+            const url = "http://writer.onrender.com/account/resetpassword/" + authenticationToken;
             let subject = "Account Password Reset | Writer";
             let message = "<h1 style='text-align: center;'>Writer</h1><br />";
             message += "<h2 style='text-align: center; font-weight: bold; color: purple;'>Link to reset password is: </h2><br />";
